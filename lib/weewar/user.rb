@@ -14,7 +14,7 @@ module Weewar
     integer_attr :id, :points, :basesCaptured, :creditsSpent, :victories, 
                  :losses, :draws, :gamesRunning
     boolean_attr :on, :readyToPlay
-    string_attr :name, :profile, :profileImage, :accountType
+    string_attr :name, :profile, :profileImage, :accountType, :profileText
     time_attr :lastLogin
 
     def maps

@@ -69,3 +69,4 @@ module Weewar
 end
 
 require 'weewar/user'
+require 'weewar/game'
