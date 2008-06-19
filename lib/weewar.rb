@@ -14,7 +14,7 @@ module Weewar
       attr_accessor :base_url
       def find(id)
         data = open("#{base_url}/#{id}")
-        new.send(:load, data)
+        new(data)
       end
       
       def integer_attr(*args)
@@ -48,6 +48,10 @@ module Weewar
           end
         end
       end
+    end
+    
+    def initialize(file = nil)
+      load(file) if file
     end
   end
 end

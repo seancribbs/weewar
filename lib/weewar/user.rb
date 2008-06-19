@@ -45,7 +45,6 @@ module Weewar
             'favoriteUnits' => 'unit',
             'preferredBy' => 'player',
             'preferredPlayers' => 'player'})
-      self
     end
   end
 end
