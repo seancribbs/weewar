@@ -21,7 +21,7 @@ describe Weewar::User do
     end
     
     it "should create a new object" do
-      Weewar::User.should_receive(:new).and_return(@user)
+      Weewar::User.should_receive(:new).with(@xml).and_return(@user)
       Weewar::User.find(1)
     end
         
