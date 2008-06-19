@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<game id="79763" >
+<name>click here</name>
+<round>21</round>
+<state>running</state>
+<pendingInvites>false</pendingInvites>
+<pace>86400</pace>
+<type>Basic</type>
+<url>http://battleground3.weewar.com/game/79763</url>
+<players>
+
+<player current='true' >bigeetea</player>
+<player  >ClamTea</player>
+<player result="votedout" >bryandavidk</player>
+<player  >srmoon7</player>
+</players>
+<map>3</map>
+<mapUrl>http://weewar.com/map/3</mapUrl>
+<creditsPerBase>100</creditsPerBase>
+<initialCredits>450</initialCredits>
+
+<playingSince>Thu Jun 19 16:14:30 UTC 2008</playingSince>
+</game>
+
+

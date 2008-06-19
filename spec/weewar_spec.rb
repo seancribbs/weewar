@@ -5,3 +5,6 @@ describe Weewar do
     Weewar.version.should_not be_nil
   end
 end
+
+describe Weewar::Base do
+end

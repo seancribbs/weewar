@@ -11,7 +11,7 @@ module Weewar
   
   class Base
     class << self
-      attr_accessor :base_url
+      attr_accessor :base_url, :xml_options
       def find(id)
         data = open("#{base_url}/#{id}")
         new(data)
@@ -52,6 +52,18 @@ module Weewar
     
     def initialize(file = nil)
       load(file) if file
+    end
+    
+    def load(file)
+      @data = XmlSimple.xml_in(file, self.class.xml_options || {})
+    end
+    
+    def reload
+      self.class.find(self.id)
+    end
+    
+    def ==(other)
+      other.is_a?(self.class) && other.id == self.id
     end
   end
 end
