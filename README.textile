@@ -1,0 +1,22 @@
+h1. Weewar
+
+Ruby bindings for the Weewar API.
+
+h2. Requirements
+
+* RubyGems
+* XmlSimple
+
+h2. Usage Example
+
+<pre><code>  require 'weewar'
+
+  user = Weewar::User.find('seancribbs')
+  user.name # => 'seancribbs'
+  user.favorite_units # => ['lightInfantry', 'lighttank', 'tank']
+
+</code></pre>
+
+h2. Authors and Contributors
+
+Original by Sean Cribbs, Scotty Moon, and Joshua French.
