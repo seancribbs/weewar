@@ -80,7 +80,10 @@ module Weewar
     end
     
     def reload
-      self.class.find(self.id)
+      id = self.id
+      instance_variables.each {|ivar| instance_variable_set(ivar, nil) }
+      data = open("#{self.class.base_url}/#{id}")
+      load(data) if data
     end
     
     def ==(other)
