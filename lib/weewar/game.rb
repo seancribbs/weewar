@@ -16,8 +16,11 @@ module Weewar
     end
     
     def current_player
-      @current_player ||= User.find Array(@data['players']).find do |u|
-        Hash === u && u['current'] == 'true'
+      @current_player ||= begin
+        user = Array(@data['players']).detect do |u|
+          Hash === u && u['current'] == 'true'
+        end
+        User.find(user['content'])
       end
     end
   end
