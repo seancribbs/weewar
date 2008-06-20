@@ -2,6 +2,8 @@ require 'rubygems'
 require 'xmlsimple'
 require 'open-uri'
 
+require 'weewar/util'
+
 module Weewar
   class << self
     def version
@@ -22,6 +24,7 @@ module Weewar
           define_method(name) do
             @data[name.to_s].to_i
           end
+          underscore_alias(name)
         end
       end
       
@@ -30,6 +33,7 @@ module Weewar
           define_method(name) do
             @data[name.to_s]
           end
+          underscore_alias(name)
         end
       end
       
@@ -38,6 +42,8 @@ module Weewar
           define_method(name) do
             @data[name.to_s] == 'true'
           end
+          boolean_alias(name)
+          underscore_alias(name)
         end
       end
       
@@ -46,7 +52,22 @@ module Weewar
           define_method(name) do
             Time.parse(@data[name.to_s])
           end
+          underscore_alias(name)
         end
+      end
+      
+      def underscore_alias(name)
+        name = name.to_sym
+        underscored = name.to_s.underscore.to_sym
+        unless underscored == name
+          alias_method underscored, name
+        end
+      end
+      
+      def boolean_alias(name)
+        qname = name.to_s + "?"
+        alias_method qname.to_sym, name.to_sym
+        underscore_alias qname
       end
     end
     

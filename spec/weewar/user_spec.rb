@@ -54,6 +54,7 @@ describe Weewar::User do
     
     it "should have profile image URL" do
       @user.profileImage.should == 'http://weewar.com/images/profile/23079_FGpXNZ.jpg'
+      @user.profile_image.should == 'http://weewar.com/images/profile/23079_FGpXNZ.jpg'
     end
     
     it "should have draws" do
@@ -70,6 +71,7 @@ describe Weewar::User do
     
     it "should have account type" do
       @user.accountType.should == 'Pro'
+      @user.account_type.should == 'Pro'
     end
     
     it "should have online status" do
@@ -78,6 +80,8 @@ describe Weewar::User do
     
     it "should have ready to play status" do
       @user.readyToPlay.should be_true
+      @user.ready_to_play.should be_true
+      @user.should be_ready_to_play
     end
     
     it "should have number of games running" do
