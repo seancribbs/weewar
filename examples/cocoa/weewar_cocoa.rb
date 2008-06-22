@@ -9,7 +9,7 @@ class App < NSObject
   def applicationDidFinishLaunching(aNotification)
     statusbar = NSStatusBar.systemStatusBar
     @item = statusbar.statusItemWithLength(NSVariableStatusItemLength)
-    image = NSImage.alloc.initWithContentsOfFile("blue_002.png")
+    image = NSImage.alloc.initWithContentsOfFile("no_games.png")
     @item.setImage(image)
     WeeController.alloc.init.add_menu_to(@item)
   end
@@ -31,6 +31,8 @@ class WeeController < NSObject
       item = menu.addItemWithTitle_action_keyEquivalent(game.name, "speak", '')
       item.setTarget(self)
     }
+    
+    item = menu.addItem(NSMenuItem.separatorItem)
     
     item = menu.addItemWithTitle_action_keyEquivalent("Quit", "terminate:", 'q')
     item.setKeyEquivalentModifierMask(NSCommandKeyMask)
