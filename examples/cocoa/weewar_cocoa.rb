@@ -9,7 +9,7 @@ class App < NSObject
   def applicationDidFinishLaunching(aNotification)
     statusbar = NSStatusBar.systemStatusBar
     @item = statusbar.statusItemWithLength(NSVariableStatusItemLength)
-    image = NSImage.alloc.initWithContentsOfFile("no_games.png")
+    image = NSImage.alloc.initWithContentsOfFile(File.expand_path(File.join(File.dirname(__FILE__), 'no_games.png')))
     @item.setImage(image)
     WeeController.alloc.init.add_menu_to(@item)
   end
