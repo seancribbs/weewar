@@ -8,10 +8,9 @@ class WeewarWindow < Gtk::Window
   def initialize
     super 'Weewar Ruby/GTK2'
     signal_connect('destroy') { Gtk.main_quit }
+    
     @mainbox = Gtk::VBox.new
     @userbox = Gtk::HBox.new
-    @scroller = Gtk::ScrolledWindow.new
-    @gameslayout = Gtk::Layout.new
     @gamesbox = Gtk::VBox.new(true)
     @statusbox = Gtk::HBox.new
 
