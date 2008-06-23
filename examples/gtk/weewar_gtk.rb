@@ -1,4 +1,3 @@
-# Example for KCRUG June meeting
 $: << File.dirname(__FILE__) + "/../../lib"
 $KCODE = 'U'
 require 'gtk2'
@@ -8,7 +7,8 @@ class WeewarWindow < Gtk::Window
   def initialize
     super 'Weewar Ruby/GTK2'
     signal_connect('destroy') { Gtk.main_quit }
-    
+    self.icon = Gtk::Image.new(File.expand_path(File.dirname(__FILE__) + '/../cocoa/no_games.png')).pixbuf
+
     @mainbox = Gtk::VBox.new
     @userbox = Gtk::HBox.new
     @gamesbox = Gtk::VBox.new(true)
@@ -48,11 +48,18 @@ class WeewarWindow < Gtk::Window
       clear_games
       user.games.each do |game|
         button = Gtk::Button.new(game.name)
-        button.label = game.name + ' [your turn]' if user == game.current_player
+        if game.current_player == user
+          button.image = Gtk::Image.new(File.expand_path(File.dirname(__FILE__) + '/../cocoa/games.png'))
+        end
         button.signal_connect('clicked') {
           system "gnome-open #{game.url}"
         }
         @gamesbox.add(button)
+      end
+      if user.games.any? {|game| game.current_player == user }
+        self.icon = Gtk::Image.new(File.expand_path(File.dirname(__FILE__) + '/../cocoa/games.png')).pixbuf
+      else
+        self.icon = Gtk::Image.new(File.expand_path(File.dirname(__FILE__) + '/../cocoa/no_games.png')).pixbuf
       end
       @status.text = "Success"
       @gamesbox.show_all
@@ -63,7 +70,7 @@ class WeewarWindow < Gtk::Window
   end
 
   def clear_games
-    @gamesbox.each {|child| @gamesbox.remove(child) }  
+    @gamesbox.each {|child| @gamesbox.remove(child) }
   end
 end
 
